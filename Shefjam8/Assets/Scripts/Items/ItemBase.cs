@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GateScript : MonoBehaviour
+public class ItemBase : MonoBehaviour
 {
 
 	[SerializeField] private GameObject eventSystem;
