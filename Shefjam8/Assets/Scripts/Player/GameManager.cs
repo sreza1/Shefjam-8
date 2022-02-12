@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     public static GameManager instance;
@@ -10,11 +11,10 @@ public class GameManager : MonoBehaviour {
         if (instance != null && instance != this) // remove duplicates
         {
             Destroy(this.gameObject);
-        } else if (instance != null && instance == this) 
-        {
-        	DontDestroyOnLoad(this);
         } else {
             instance = this;
+            DontDestroyOnLoad(gameObject);
+            RespawnPlayers();
         }
     }
 
@@ -24,5 +24,21 @@ public class GameManager : MonoBehaviour {
 
     public InventoryManager GetInventoryManager() {
     	return GetComponent<InventoryManager>();
+    }
+
+    public void LoadNewScene() 
+    {
+    	// go to new scene
+    	//SceneManager.LoadScene("testScene", LoadSceneMode.Single);
+    	SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        RespawnPlayers();
+    }
+
+    private void RespawnPlayers() {
+    	GetComponent<PlayerManager>().RespawnPlayers();
     }
 }

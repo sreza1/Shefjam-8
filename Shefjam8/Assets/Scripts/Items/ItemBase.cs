@@ -31,4 +31,17 @@ public class ItemBase : MonoBehaviour
     protected virtual void PlayerCollided(GameObject player) {
     	Destroy(gameObject);
     }
+
+    // Upon collision with another GameObject, check if it is player one, and destroy self (test)
+    private void OnTriggerExit2D(Collider2D other)
+    {
+    	GameObject collidingObject = other.gameObject;
+    	if (collidingObject == p1) {
+    		PlayerStoppedColliding(collidingObject);
+    	}
+    }
+
+    protected virtual void PlayerStoppedColliding(GameObject player) {
+    	print("Player Stopped Colliding");
+    }
 }

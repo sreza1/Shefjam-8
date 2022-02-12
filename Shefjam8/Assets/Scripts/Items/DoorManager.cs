@@ -35,7 +35,7 @@ public class DoorManager : ItemBase
     			locked = false;
     			GetComponent<SpriteRenderer>().color = unlockedColor;
     		}
-    		else if (unlockKey && GameManager.instance.GetInventoryManager.HasKey() /* player has key*/) {
+    		else if (unlockKey && GameManager.instance.GetInventoryManager().HasKey() /* player has key*/) {
     			GameManager.instance.GetInventoryManager().RemoveKey();
     			locked = false;
     			GetComponent<SpriteRenderer>().color = unlockedColor;
