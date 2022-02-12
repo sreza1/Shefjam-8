@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     Vector2 movement;
     Vector2 rotate;
     Vector2 mousePos;
+    Vector2 previousRot;
 
 
 
@@ -20,8 +21,13 @@ public class PlayerMovement : MonoBehaviour
         movement.y = Input.GetAxisRaw("Vertical");
 
         //ps5 right analog stick rotation
-        rotate.x = Input.GetAxisRaw("HorizontalTurn");
-        rotate.y = Input.GetAxisRaw("VerticalTurn");
+        if ((Input.GetAxisRaw("HorizontalTurn")!=0 || Input.GetAxisRaw("HorizontalTurn")!=0))
+        {
+            rotate.x = Input.GetAxisRaw("HorizontalTurn");
+            rotate.y = Input.GetAxisRaw("VerticalTurn");
+        }
+
+        
 
 
     }

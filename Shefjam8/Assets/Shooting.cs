@@ -20,6 +20,7 @@ public class Shooting : MonoBehaviour
         if ((Input.GetAxisRaw("HorizontalTurn")!=0 || Input.GetAxisRaw("HorizontalTurn")!=0) && myTime > nextFire)
         {
             nextFire = myTime + fireDelta;
+            
             Shoot();
 
             nextFire = nextFire - myTime;
