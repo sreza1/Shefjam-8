@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2135585597343286014, guid: 21f38545a3a5c4ecea952986212f3580, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.5978849, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -150,11 +150,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 746d851b783f64c99857c65299405db5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventSystem: {fileID: 0}
   exitDoor: {fileID: 0}
   exitOffsetDistance: 2
   unlockedColor: {r: 0, g: 0, b: 0, a: 1}
-  lockedColor: {r: 0, g: 0.2535498, b: 1, a: 1}
+  lockedColor: {r: 1, g: 0.5430124, b: 0, a: 1}
   locked: 1
   unlockScore: 100
   unlockKey: 0

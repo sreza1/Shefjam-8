@@ -15,10 +15,11 @@ public class PlayerManager : MonoBehaviour
 	}
 
 	public void TeleportToExit(GameObject teleportLocationObject, int teleportOffsetDistance){
-		if (teleportLocationObject) {
-			Transform newTransform = teleportLocationObject.transform;
-			playerOne.transform.position = newTransform.position + (teleportOffsetDistance * newTransform.transform.up);
-		}
+		playerOne.GetComponent<PlayerMovement>().TeleportToLocation(teleportLocationObject, teleportOffsetDistance);
+		//if (teleportLocationObject) {
+	//		Transform newTransform = teleportLocationObject.transform;
+	//		playerOne.transform.position = newTransform.position + (teleportOffsetDistance * newTransform.transform.up);
+	//	}
 	}
 
     // Start is called before the first frame update

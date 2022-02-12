@@ -1,0 +1,88 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class CameraManager : MonoBehaviour
+{
+
+	protected PlayerManager playerManager;
+	private GameObject collidingPlayer;
+	private GameObject p1 = null;
+
+	// Movement speed in units per second.
+    public float cameraSpeed = 2.5F;
+
+    // Time when the movement started.
+    private float movementStartTime; // time we started moving camera
+
+    // Total distance between the markers.
+    private float journeyLength; // distance to move camera
+
+    private int edgeColliderOffset = 10;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        playerManager = GameManager.instance.GetPlayerManager();
+        p1 = playerManager.GetPlayer();
+        Vector3 minScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
+     	Vector3 maxScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
+     	GetComponent<BoxCollider2D>().size = new Vector2(maxScreenBounds.x - edgeColliderOffset, maxScreenBounds.y - edgeColliderOffset);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+    	if (collidingPlayer) {
+    		Vector3 newLocation = new Vector3(collidingPlayer.transform.position.x, collidingPlayer.transform.position.y, transform.position.z);
+
+    		// Distance moved equals elapsed time times speed..
+        	float distCovered = (Time.time - movementStartTime) * cameraSpeed;
+
+        	// Fraction of journey completed equals current distance divided by total distance.
+        	float fractionOfJourney = distCovered / journeyLength;
+
+        	// Set our position as a fraction of the distance between the markers.
+        	transform.position = Vector3.Lerp(transform.position, newLocation, fractionOfJourney);
+    		//print("camrea pos: " + transform.position.ToString() + "; playerPos: " + collidingPlayer.transform.position.ToString() + "; diff: " + diff.ToString());
+        	//transform.position += diff * Time.deltaTime * collidingPlayer.GetComponent<PlayerMovement>().moveSpeed;
+	    }
+	}
+
+    // Upon collision with another GameObject, check if it is player one, and destroy self (test)
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+    	GameObject collidingObject = other.gameObject;
+    	if (collidingObject == p1) {
+    		PlayerCollided(collidingObject);
+    	}
+    }
+
+    protected virtual void PlayerCollided(GameObject player) {
+    	collidingPlayer = null;
+    	
+    }
+
+    // Upon collision with another GameObject, check if it is player one, and destroy self (test)
+    private void OnTriggerExit2D(Collider2D other)
+    {
+    	GameObject collidingObject = other.gameObject;
+    	if (collidingObject == p1) {
+    		PlayerStoppedColliding(collidingObject);
+    	}
+    }
+
+    protected virtual void PlayerStoppedColliding(GameObject player) {
+    	//Vector2 playerLocRelativeToCenter = transform.position -= player.transform.position;
+    	collidingPlayer = player;
+
+    	// Keep a note of the time the movement started.
+        movementStartTime = Time.time;
+
+        // Calculate the journey length.
+        journeyLength = Vector2.Distance(transform.position, player.transform.position);
+    	
+    	//print("Pv" + playerVelocity.x + "; pv: " + playerVelocity.y + "; speed: " + playerVelocity.GetSpeed());
+    	//transform.position += (new Vector3(playerVelocity.x, playerVelocity.y, 0) * playerVelocity.magnitude);
+    }
+}
