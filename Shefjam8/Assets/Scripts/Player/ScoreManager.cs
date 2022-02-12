@@ -18,11 +18,13 @@ public class ScoreManager : MonoBehaviour
 
     public static Text score;
     public static Text addedScore;
-    public static int startFontSize;
     public static Vector3 textStartPos;
-    public static int textOffset;
+    public static float textOffset;
 
     public static Color textColor;
+
+    public static int startFontSize;
+    public static float floatFontSize;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +39,7 @@ public class ScoreManager : MonoBehaviour
 
         textStartPos = addedScore.transform.position;
         startFontSize = score.fontSize;
+        floatFontSize = score.fontSize;
     }
 
     // Update is called once per frame
@@ -69,6 +72,7 @@ public class ScoreManager : MonoBehaviour
 
         //Increase size of font when increment
         score.fontSize = (int)(startFontSize * 2);
+        floatFontSize = score.fontSize;
 
         textOffset = -50;
         textColor.a = 1.0f;
@@ -85,7 +89,8 @@ public class ScoreManager : MonoBehaviour
         //Shrinks size of font
         if (score.fontSize > startFontSize)
         {
-            score.fontSize -= (int)(Time.deltaTime*350);
+            floatFontSize -= Time.deltaTime*30*4;
+            score.fontSize = (int)floatFontSize;
         }
 
         if (textOffset < 0)
@@ -93,7 +98,7 @@ public class ScoreManager : MonoBehaviour
             var newPos = textStartPos;
             newPos.y += textOffset;
             addedScore.transform.position = newPos;
-            textOffset += 2;
+            textOffset += Time.deltaTime*60;
 
             textColor.a = Math.Abs(textOffset) / 50.0f;
             addedScore.color = textColor;
