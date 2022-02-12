@@ -98,11 +98,16 @@ public class ScoreManager : MonoBehaviour
             var newPos = textStartPos;
             newPos.y += textOffset;
             addedScore.transform.position = newPos;
-            textOffset += Time.deltaTime*60;
+            textOffset += Time.deltaTime * 60;
 
             textColor.a = Math.Abs(textOffset) / 50.0f;
             addedScore.color = textColor;
         }
+        else
+        {
+            textColor.a = 0.0f;
+        }
+        addedScore.color = textColor;
     }
 
     void UpdateTextUI()
