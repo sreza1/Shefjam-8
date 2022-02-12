@@ -46,23 +46,21 @@ public class PlayerMovement : MonoBehaviour
     		return;
     	}
 
-    	if(movement != new Vector2(0,0)) {
-	    	// figure out min/max bounds in world coordinates
-	    	Vector3 minScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
-	     	Vector3 maxScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
+    	
+	    // figure out min/max bounds in world coordinates
+	    Vector3 minScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
+	    Vector3 maxScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
 
-	     	Vector3 newPos = rb.position + movement * moveSpeed * Time.fixedDeltaTime;
-	     	newPos = new Vector3(Mathf.Clamp(newPos.x, minScreenBounds.x + 1, maxScreenBounds.x - 1),
+	     Vector3 newPos = rb.position + movement * moveSpeed * Time.fixedDeltaTime;
+	     newPos = new Vector3(Mathf.Clamp(newPos.x, minScreenBounds.x + 1, maxScreenBounds.x - 1),
 	     						Mathf.Clamp(newPos.y, minScreenBounds.y + 1, maxScreenBounds.y - 1),
-	     									newPos.z);
+	     						newPos.z);
 
-	        rb.MovePosition(newPos);
+	    rb.MovePosition(newPos);
 	 	 	
 
-	        float angle = Mathf.Atan2(rotate.y, rotate.x) * Mathf.Rad2Deg - 90f;
-	        rb.rotation = angle;
-	    } 
-
+	    float angle = Mathf.Atan2(rotate.y, rotate.x) * Mathf.Rad2Deg - 90f;
+	    rb.rotation = angle;
     }
 
     public void TeleportToLocation(GameObject teleportLocationObject, int teleportOffsetDistance){
