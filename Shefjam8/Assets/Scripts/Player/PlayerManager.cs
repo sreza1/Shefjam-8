@@ -6,16 +6,15 @@ public class PlayerManager : MonoBehaviour
 {
 
 	[SerializeField] private GameObject playerOne;
-	[SerializeField] private int teleportOffset = 2;
 
 	public GameObject GetPlayer() {
 		return playerOne;
 	}
 
-	public void TeleportToExit(GameObject teleportLocationObject){
+	public void TeleportToExit(GameObject teleportLocationObject, int teleportOffsetDistance){
 		if (teleportLocationObject) {
 			Transform newTransform = teleportLocationObject.transform;
-			playerOne.transform.position = newTransform.position + (teleportOffset * newTransform.transform.up);
+			playerOne.transform.position = newTransform.position + (teleportOffsetDistance * newTransform.transform.up);
 		}
 	}
 
