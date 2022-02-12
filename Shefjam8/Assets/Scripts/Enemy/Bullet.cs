@@ -12,7 +12,7 @@ public class Bullet : MonoBehaviour
         //     Destroy(collision.gameObject);
         // }
         
-        Destroy(gameObject,0.2f);
+        Destroy(gameObject);
 
     }
 }
