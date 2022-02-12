@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class ItemBase : MonoBehaviour
 {
-	[SerializeField] protected GameObject eventSystem;
 	protected PlayerManager playerManager;
 	private GameObject p1 = null;
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        playerManager = eventSystem.GetComponent<PlayerManager>();
+    	playerManager = GameManager.instance.GetPlayerManager();
         p1 = playerManager.GetPlayer();
     }
 
