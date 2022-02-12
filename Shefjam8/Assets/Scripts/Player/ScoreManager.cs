@@ -67,7 +67,8 @@ public class ScoreManager : MonoBehaviour
 
         scoreDiff = scoreValue - displayedValue;
 
-        score.fontSize = (int)(startFontSize * 1.25);
+        //Increase size of font when increment
+        score.fontSize = (int)(startFontSize * 2);
 
         textOffset = -50;
         textColor.a = 1.0f;
@@ -81,9 +82,10 @@ public class ScoreManager : MonoBehaviour
             displayedValue += scoreDiff / (int)(1 / Time.deltaTime);
         }
 
+        //Shrinks size of font
         if (score.fontSize > startFontSize)
         {
-            score.fontSize -= 1;
+            score.fontSize -= (int)(Time.deltaTime*350);
         }
 
         if (textOffset < 0)
