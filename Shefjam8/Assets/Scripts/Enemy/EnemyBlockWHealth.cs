@@ -1,9 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class EnemyBlockWHealth : MonoBehaviour
 {
+	protected PlayerManager playerManager;
+	private GameObject p1 = null;
+	[SerializeField] private int damageStrength = 10;
+
+	void Start() 
+	{
+		playerManager = GameManager.instance.GetPlayerManager();
+		p1 = playerManager.GetPlayer();
+		GetComponent<AIDestinationSetter>().target = p1.transform;
+	}
 
     public int curHealth = 50;
     public int bulletDmg = 10;
@@ -17,7 +28,12 @@ public class EnemyBlockWHealth : MonoBehaviour
             if (curHealth==0){
                 Destroy(gameObject);
             }
-        }        
+        } 
+
+        if  (collision.gameObject == p1)
+        {
+        	GameManager.instance.GetPlayerManager().DamagePlayer(collision.gameObject, damageStrength);
+        }      
 
     }
 }
