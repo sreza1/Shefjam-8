@@ -21,4 +21,8 @@ public class GameManager : MonoBehaviour {
     public PlayerManager GetPlayerManager() {
     	return GetComponent<PlayerManager>();
     }
+
+    public InventoryManager GetInventoryManager() {
+    	return GetComponent<InventoryManager>();
+    }
 }

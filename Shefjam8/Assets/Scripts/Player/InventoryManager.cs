@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
+	// keys are global across all players
 	[SerializeField] private int NumKeys = 0;
 
 
