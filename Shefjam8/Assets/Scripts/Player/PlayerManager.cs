@@ -14,12 +14,10 @@ public class PlayerManager : MonoBehaviour
 		return playerOne;
 	}
 
-	public void TeleportToExit(GameObject teleportLocationObject, int teleportOffsetDistance){
+	public void TeleportToExit(GameObject currentLocationObject, GameObject teleportLocationObject, int teleportOffsetDistance){
+		currentLocationObject.transform.parent.gameObject.SetActive(false);
 		playerOne.GetComponent<PlayerMovement>().TeleportToLocation(teleportLocationObject, teleportOffsetDistance);
-		//if (teleportLocationObject) {
-	//		Transform newTransform = teleportLocationObject.transform;
-	//		playerOne.transform.position = newTransform.position + (teleportOffsetDistance * newTransform.transform.up);
-	//	}
+		teleportLocationObject.transform.parent.gameObject.SetActive(true);
 	}
 
     // Start is called before the first frame update

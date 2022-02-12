@@ -43,7 +43,7 @@ public class DoorManager : ItemBase
     	}
 
     	if (exitDoor && !locked) {
-    		playerManager.TeleportToExit(exitDoor, exitOffsetDistance);
+    		playerManager.TeleportToExit(gameObject, exitDoor, exitOffsetDistance);
     	}
     }
 
