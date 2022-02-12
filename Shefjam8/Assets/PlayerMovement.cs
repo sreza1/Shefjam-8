@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System; 
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -21,15 +22,13 @@ public class PlayerMovement : MonoBehaviour
         movement.y = Input.GetAxisRaw("Vertical");
 
         //ps5 right analog stick rotation
-        if ((Input.GetAxisRaw("HorizontalTurn")!=0 || Input.GetAxisRaw("HorizontalTurn")!=0))
+        if (Input.GetAxisRaw("HorizontalTurn")!=0 || Input.GetAxisRaw("VerticalTurn")!=0)
         {
             rotate.x = Input.GetAxisRaw("HorizontalTurn");
             rotate.y = Input.GetAxisRaw("VerticalTurn");
         }
 
         
-
-
     }
 
     void FixedUpdate()
