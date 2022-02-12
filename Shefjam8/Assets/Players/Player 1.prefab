@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 256190288398813096}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,9 +45,9 @@ GameObject:
   - component: {fileID: 256190288695414884}
   - component: {fileID: 256190288695414883}
   - component: {fileID: 9119684479381980508}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player 1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57e9f0aaab747b742b144a453543555c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DEFAULT_TELEPORT_DELAY: 1
   moveSpeed: 20
   rb: {fileID: 256190288695414887}
 --- !u!70 &256190288695414884
