@@ -10,7 +10,7 @@ public class CameraManager : MonoBehaviour
 	private GameObject p1 = null;
 
 	// Movement speed in units per second.
-    public float cameraSpeed = 2.5F;
+    public float cameraSpeed = 10f;
 
     // Time when the movement started.
     private float movementStartTime; // time we started moving camera
@@ -35,17 +35,8 @@ public class CameraManager : MonoBehaviour
     {
     	if (collidingPlayer) {
     		Vector3 newLocation = new Vector3(collidingPlayer.transform.position.x, collidingPlayer.transform.position.y, transform.position.z);
-
-    		// Distance moved equals elapsed time times speed..
-        	float distCovered = (Time.time - movementStartTime) * cameraSpeed;
-
-        	// Fraction of journey completed equals current distance divided by total distance.
-        	float fractionOfJourney = distCovered / journeyLength;
-
-        	// Set our position as a fraction of the distance between the markers.
-        	transform.position = Vector3.Lerp(transform.position, newLocation, fractionOfJourney);
-    		//print("camrea pos: " + transform.position.ToString() + "; playerPos: " + collidingPlayer.transform.position.ToString() + "; diff: " + diff.ToString());
-        	//transform.position += diff * Time.deltaTime * collidingPlayer.GetComponent<PlayerMovement>().moveSpeed;
+    		float halfDistance = Vector3.Distance(transform.position, newLocation);
+    		transform.position = Vector3.MoveTowards(transform.position, newLocation, cameraSpeed * Time.deltaTime);
 	    }
 	}
 
