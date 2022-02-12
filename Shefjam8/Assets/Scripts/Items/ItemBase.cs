@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ItemBase : MonoBehaviour
 {
-	[SerializeField] private GameObject eventSystem;
-	private PlayerManager playerManager;
+	[SerializeField] protected GameObject eventSystem;
+	protected PlayerManager playerManager;
 	private GameObject p1 = null;
 
     // Start is called before the first frame update
