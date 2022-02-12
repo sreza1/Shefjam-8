@@ -7,11 +7,19 @@ public class DoorManager : ItemBase
 {
 	[SerializeField] private GameObject exitDoor;
 	[SerializeField] private int exitOffsetDistance = 2;
+	[SerializeField] private Color unlockedColor;
+	[SerializeField] private Color lockedColor;
+	[SerializeField] private bool locked = false;
+	[SerializeField] private long unlockScore = 0;
+	[SerializeField] private bool unlockKey = false;
 
     // Start is called before the first frame update
     protected override void Start()
     {
     	base.Start();   
+    	if (locked) {
+    		GetComponent<SpriteRenderer>().color = lockedColor;
+    	}
     }
 
     // Update is called once per frame
@@ -21,7 +29,19 @@ public class DoorManager : ItemBase
     }
 
     protected override void PlayerCollided(GameObject player) {
-    	if (exitDoor) {
+    	if (locked) {
+    		if (unlockScore > 0 && true /* score above threshold */)
+    		{
+    			locked = false;
+    			GetComponent<SpriteRenderer>().color = unlockedColor;
+    		}
+    		else if (unlockKey && true /* player has key*/) {
+    			locked = false;
+    			GetComponent<SpriteRenderer>().color = unlockedColor;
+    		}
+    	}
+
+    	if (exitDoor && !locked) {
     		playerManager.TeleportToExit(exitDoor, exitOffsetDistance);
     	}
     }
