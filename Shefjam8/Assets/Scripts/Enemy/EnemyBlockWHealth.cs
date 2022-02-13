@@ -31,7 +31,7 @@ public class EnemyBlockWHealth : MonoBehaviour
             }
         } 
 
-        if  (collision.gameObject == p1)
+        if  (collision.gameObject == p1 && p1.GetComponent<PlayerStats>().CanTakeDamage())
         {
         	GameManager.instance.GetPlayerManager().DamagePlayer(collision.gameObject, damageStrength);
         }      
