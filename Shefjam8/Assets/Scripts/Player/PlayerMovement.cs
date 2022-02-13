@@ -13,11 +13,9 @@ public class PlayerMovement : MonoBehaviour
     Vector2 rotate;
     Vector2 mousePos;
     Vector2 previousRot;
-
     private bool teleported = false;
 
-
-
+	public Animator animator;
 
     // Update is called once per frame
     void Update()
@@ -25,14 +23,30 @@ public class PlayerMovement : MonoBehaviour
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
+		animator.SetFloat("Horizontal", movement.x);
+		animator.SetFloat("Vertical", movement.y);
+		animator.SetFloat("Speed", movement.sqrMagnitude);
+
         //ps5 right analog stick rotation
         if (Input.GetAxisRaw("HorizontalTurn")!=0 || Input.GetAxisRaw("VerticalTurn")!=0)
         {
             rotate.x = Input.GetAxisRaw("HorizontalTurn");
             rotate.y = Input.GetAxisRaw("VerticalTurn");
-        }
 
-        
+			var hFloat = rotate.x;
+			var vFloat = rotate.y;
+
+			if (movement.sqrMagnitude > 0.01f)
+			{
+				animator.SetFloat("Horizontal", hFloat);
+				animator.SetFloat("Vertical", vFloat);	
+			}
+			else
+			{
+				animator.SetFloat("HAim", hFloat);
+				animator.SetFloat("VAim", vFloat);
+			}
+        }   
     }
 
     void FixedUpdate()
@@ -60,7 +74,9 @@ public class PlayerMovement : MonoBehaviour
 	 	 	
 
 	    float angle = Mathf.Atan2(rotate.y, rotate.x) * Mathf.Rad2Deg - 90f;
-	    rb.rotation = angle;
+
+		gameObject.transform.GetChild(0).rotation = Quaternion.Euler(0, 0, angle);
+
     }
 
     public void TeleportToLocation(GameObject teleportLocationObject, int teleportOffsetDistance){
