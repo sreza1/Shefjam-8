@@ -196,8 +196,8 @@ public class UIManager : MonoBehaviour
 
     private bool isPlayerDead = false;
     private bool levelComplete = false;
-    public GameObject gameOverScreen;
-    public GameObject endGameScreen;
+    [SerializeField] public GameObject gameOverScreen;
+    [SerializeField] public GameObject endGameScreen;
     void PlayerDied()
     {
     	isPlayerDead = true;

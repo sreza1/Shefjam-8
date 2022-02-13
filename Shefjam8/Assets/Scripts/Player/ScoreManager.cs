@@ -62,7 +62,7 @@ public class ScoreManager : MonoBehaviour
 		//Increase size of font when increment
         OnScoreIncrement(displayedValue, scoreValue, scoreDiff);
 
-        if (finalLevel && actualScore > winningScore) {
+        if (finalLevel && actualScore >= winningScore) {
         	GameManager.instance.GetScoreManager().PauseTimer();
 	        OnLevelComplete();
         }
