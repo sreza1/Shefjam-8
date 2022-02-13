@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2580392791659346609}
   - component: {fileID: 2580392791659346614}
   - component: {fileID: 2580392791659346615}
+  - component: {fileID: 1898427271013644884}
   m_Layer: 7
   m_Name: ChasingEnemyBlockWHealthRange
   m_TagString: Enemy
@@ -79,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2113f09ae5974594e85d406af2eb13a4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -107,7 +108,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.28, y: 1.28}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -237,9 +238,29 @@ MonoBehaviour:
   shootPoint: {fileID: 2580392793528104280}
   bulletForce: 20
   shotOffset: 0.5
+  animator: {fileID: 1898427271013644884}
   damageStrength: 10
   curHealth: 50
   bulletDmg: 10
+--- !u!95 &1898427271013644884
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2580392791659346612}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: be24c6df0f361fd4f8377be6ad7043ae, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2580392792330825939
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,7 +307,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 7.8
+  m_Radius: 12
 --- !u!1 &2580392793528104281
 GameObject:
   m_ObjectHideFlags: 0
