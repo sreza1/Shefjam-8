@@ -30,7 +30,7 @@ public class DoorManager : ItemBase
 
     protected override void PlayerCollided(GameObject player) {
     	if (locked) {
-    		if (unlockScore > 0 && true /* score above threshold */)
+    		if (unlockScore > 0 && GameManager.instance.GetScoreManager().MaxScoreReached() /* score above threshold */)
     		{
     			locked = false;
     			GetComponent<SpriteRenderer>().color = unlockedColor;
