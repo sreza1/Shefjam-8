@@ -57,7 +57,8 @@ public class UIManager : MonoBehaviour
 
         timer = transform.GetChild(1).GetComponent<Text>();
         health = transform.GetChild(2).GetComponent<Text>();
-
+        GameManager.instance.GetPlayerManager().InitUIHealth();
+        
         TimerResume(); // start timer once UI loads
     }
 

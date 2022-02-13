@@ -31,7 +31,7 @@ public class PlayerManager : MonoBehaviour
     	// set health for each player
     	if (playerOne) {
     		playerOneHealth = DEFAULT_HEALTH;
-    		OnHealthChanged(playerOneHealth);
+    		OnHealthChanged(DEFAULT_HEALTH);
     	}
     }
 
@@ -40,6 +40,9 @@ public class PlayerManager : MonoBehaviour
     { 
     }
 
+    public void InitUIHealth() {
+    	OnHealthChanged(playerOneHealth);
+    }
     // Damage the given player by the specified (base) amount
     public void DamagePlayer(GameObject victim, int damage){
     	PlayerStats pStats = victim.GetComponent<PlayerStats>();
@@ -62,7 +65,6 @@ public class PlayerManager : MonoBehaviour
     		if(playerOne) { // set the health to the last stored value (or full if player was dead)
     			if (playerOneHealth <= 0) {playerOneHealth = DEFAULT_HEALTH; } 
     			playerOne.GetComponent<PlayerStats>().SetNewHealth(playerOneHealth);
-    			OnHealthChanged(playerOneHealth);
     		}
     	}
     }
