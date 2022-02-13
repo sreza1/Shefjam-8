@@ -23,6 +23,8 @@ public class ChasingEnemyBlockWHealthRange : MonoBehaviour
     private float shootDelayRemaining = 0.0F;
     private GameObject detectedPlayer;
 
+    public Animator animator;
+
 
 
     protected PlayerManager playerManager;
@@ -46,6 +48,9 @@ public class ChasingEnemyBlockWHealthRange : MonoBehaviour
                 ShootPlayer();
             }
         }
+
+        animator.SetFloat("Horizontal", p1.transform.position.x - this.transform.position.x);
+
     }
 
     public int curHealth = 50;
