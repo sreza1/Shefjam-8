@@ -29,9 +29,11 @@ public class ScoreManager : MonoBehaviour
     private bool timerRunning = false;
     private float timerValue = 0;
 
+    void Start() {
+    	ResumeTimer();
+    }
     void Update()
     {
-
     	if(timerRunning)
     	{
     		timerValue += Time.deltaTime;
@@ -57,7 +59,6 @@ public class ScoreManager : MonoBehaviour
 
     public void PauseTimer() 
     {
-    	print("score timer resumed");
     	timerRunning = false;
     	OnTimerPause();
     }
@@ -74,6 +75,10 @@ public class ScoreManager : MonoBehaviour
 
     public bool MaxScoreReached() {
     	return actualScore >= maxScore;
+    }
+
+    public float GetElapsedTime() {
+    	return timerValue;
     }
 }
 

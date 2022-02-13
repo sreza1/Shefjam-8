@@ -61,7 +61,11 @@ public class PlayerManager : MonoBehaviour
     	OnHealthChanged(currHealth);
     	pStats.StartInvulnerableFrames(); // make player invulnerable for a short times
 
-    	if (currHealth <= 0) { OnPlayerDied(); Destroy(victim); }
+    	if (currHealth <= 0) { 
+    		OnPlayerDied(); 
+    		Destroy(victim); 
+    		GameManager.instance.GetScoreManager().PauseTimer();
+    	}
     }
 
     public void RespawnPlayers()

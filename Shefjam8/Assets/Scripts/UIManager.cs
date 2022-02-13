@@ -68,6 +68,8 @@ public class UIManager : MonoBehaviour
         GameManager.instance.GetPlayerManager().InitUIHealth();
         
         TimerResume(); // start timer once UI loads
+
+        gameOverScreen.SetActive(false);
     }
 
     // Update is called once per frame
@@ -100,9 +102,7 @@ public class UIManager : MonoBehaviour
         }
 
         if (isPlayerDead) {
-        	print("PLAYER DEAD WAITING FOR INPUT");
         	if (Input.anyKey) {
-        		print("Restarting Level");
         		GameManager.instance.RestartLevel();
         	}
         }
@@ -189,9 +189,15 @@ public class UIManager : MonoBehaviour
 
 
     private bool isPlayerDead = false;
+    public GameObject gameOverScreen;
     void PlayerDied()
     {
-    	print("Game Over");
     	isPlayerDead = true;
+    	gameOverScreen.SetActive(true);
+    	Text time = GameObject.Find("TimeValue").GetComponent<Text>();
+    	TimeSpan timespan = TimeSpan.FromSeconds((double)GameManager.instance.GetScoreManager().GetElapsedTime());
+		time.text = timespan.ToString(@"mm\:ss");
+    	Text scoreText = GameObject.Find("ScoreValue").GetComponent<Text>();
+    	scoreText.text = GameManager.instance.GetScoreManager().GetActualScore().ToString();
     }
 }
