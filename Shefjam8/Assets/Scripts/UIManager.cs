@@ -31,12 +31,22 @@ public class UIManager : MonoBehaviour
     private static Text timer;
     private float timerValue = 0.0f;
     private bool timerRunning = false;
-	// Start is called before the first frame update
-    void Start()
+
+    private static Text health;
+
+    void Awake()
     {
     	ScoreManager.OnScoreIncrement += Increment;
     	ScoreManager.OnTimerResume += TimerResume;
     	ScoreManager.OnTimerPause += TimerPause;
+    	PlayerManager.OnHealthChanged += HealthChanged;
+    }
+    
+	// Start is called before the first frame update
+    void Start()
+    {
+    	
+
     	
         score = transform.GetChild(0).GetComponent<Text>();
 
@@ -52,6 +62,7 @@ public class UIManager : MonoBehaviour
 
 
         timer = transform.GetChild(1).GetComponent<Text>();
+        health = transform.GetChild(2).GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -132,12 +143,11 @@ public class UIManager : MonoBehaviour
 
     /*** TIMER ***/
     void TimerPause(bool Finish) {
-    	print("TIMER PAUSEd");
     	timerRunning = false;
     }
 
     void TimerResume(bool Restart) {
-    	if (Restart) {print("Timer Restarted");}
+    	print("timer resumed");
     	timerRunning = true;
     	timerValue = 0.0f;
     }
@@ -146,5 +156,13 @@ public class UIManager : MonoBehaviour
     {	
     	TimeSpan timespan = TimeSpan.FromSeconds((double)timerValue);
 		timer.text = timespan.ToString(@"mm\:ss");
+    }
+
+    //** END OF TIMER **//
+
+    // ** HEALTH **//
+    void HealthChanged(int newHealth)
+    {
+    	health.text = newHealth.ToString();
     }
 }

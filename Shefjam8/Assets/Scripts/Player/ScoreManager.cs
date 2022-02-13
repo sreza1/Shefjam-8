@@ -60,20 +60,18 @@ public class ScoreManager : MonoBehaviour
     }
 
     public void StartTimer() {
-    	print("timer started");
     	startTimerWhenReady = true;
     }
 
     public void PauseTimer() 
     {
-    	print("Score timer paused");
+    	print("score timer resumed");
     	timerRunning = false;
     	OnTimerPause(false);
     }
 
     public void ResumeTimer()
     {
-    	print("Score tiemr resumed");
     	timerRunning = true;
     	OnTimerResume(false);
     }
