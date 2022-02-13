@@ -49,6 +49,8 @@ public class boss1 : MonoBehaviour
             curHealth -= bulletDmg;
             if (curHealth == 0)
             {
+            	GameManager.instance.GetScoreManager().PauseTimer();
+            	GameManager.instance.GetScoreManager().BossDefeated();
                 Destroy(gameObject);
             }
         }

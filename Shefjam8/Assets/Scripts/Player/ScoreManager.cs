@@ -13,6 +13,9 @@ public class ScoreManager : MonoBehaviour
 	public delegate void ScoreIncrement(BigInteger displayedScore, BigInteger newScore, BigInteger scoreDiff);
     public static event ScoreIncrement OnScoreIncrement;
 
+    public delegate void LevelComplete();
+    public static event LevelComplete OnLevelComplete;
+
     public delegate void TimerResume();
     public delegate void TimerPause();
     public static event TimerResume OnTimerResume;
@@ -39,6 +42,12 @@ public class ScoreManager : MonoBehaviour
     		timerValue += Time.deltaTime;
     	}
     }
+
+    public void BossDefeated() {
+    	Increment();
+    	OnLevelComplete();
+    }
+
 
     public void Increment()
     {

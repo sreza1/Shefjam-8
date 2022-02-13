@@ -44,6 +44,7 @@ public class UIManager : MonoBehaviour
     	ScoreManager.OnTimerPause += TimerPause;
     	PlayerManager.OnHealthChanged += HealthChanged;
     	PlayerManager.OnPlayerDied += PlayerDied;
+    	ScoreManager.OnLevelComplete += GameEnd;
     	maxScore = GameManager.instance.GetScoreManager().GetMaxScore();
 
         score = transform.GetChild(0).GetComponent<Text>();
@@ -70,6 +71,7 @@ public class UIManager : MonoBehaviour
         TimerResume(); // start timer once UI loads
 
         gameOverScreen.SetActive(false);
+        endGameScreen.SetActive(false);
     }
 
     // Update is called once per frame
@@ -190,14 +192,26 @@ public class UIManager : MonoBehaviour
 
     private bool isPlayerDead = false;
     public GameObject gameOverScreen;
+    public GameObject endGameScreen;
     void PlayerDied()
     {
     	isPlayerDead = true;
     	gameOverScreen.SetActive(true);
-    	Text time = GameObject.Find("TimeValue").GetComponent<Text>();
+    	Text time = GameObject.Find("TimeValue-GameOver").GetComponent<Text>();
     	TimeSpan timespan = TimeSpan.FromSeconds((double)GameManager.instance.GetScoreManager().GetElapsedTime());
 		time.text = timespan.ToString(@"mm\:ss");
-    	Text scoreText = GameObject.Find("ScoreValue").GetComponent<Text>();
+    	Text scoreText = GameObject.Find("ScoreValue-GameOver").GetComponent<Text>();
+    	scoreText.text = GameManager.instance.GetScoreManager().GetActualScore().ToString();
+    }
+
+    void GameEnd()
+    {
+    	isPlayerDead = true;
+    	endGameScreen.SetActive(true);
+    	Text time = GameObject.Find("TimeValue-End").GetComponent<Text>();
+    	TimeSpan timespan = TimeSpan.FromSeconds((double)GameManager.instance.GetScoreManager().GetElapsedTime());
+		time.text = timespan.ToString(@"mm\:ss");
+    	Text scoreText = GameObject.Find("ScoreValue-End").GetComponent<Text>();
     	scoreText.text = GameManager.instance.GetScoreManager().GetActualScore().ToString();
     }
 }
