@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2580392791659346609}
   - component: {fileID: 2580392791659346614}
   - component: {fileID: 2580392791659346615}
-  - component: {fileID: 6283172919381096645}
+  - component: {fileID: 1898427271013644884}
   m_Layer: 7
   m_Name: ChasingEnemyBlockWHealthRange
   m_TagString: Enemy
@@ -238,11 +238,11 @@ MonoBehaviour:
   shootPoint: {fileID: 2580392793528104280}
   bulletForce: 20
   shotOffset: 0.5
-  animator: {fileID: 6283172919381096645}
+  animator: {fileID: 1898427271013644884}
   damageStrength: 10
   curHealth: 50
   bulletDmg: 10
---- !u!95 &6283172919381096645
+--- !u!95 &1898427271013644884
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -252,7 +252,7 @@ Animator:
   m_GameObject: {fileID: 2580392791659346612}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: cbb7d48d833770544a4592a596a699fd, type: 2}
+  m_Controller: {fileID: 9100000, guid: be24c6df0f361fd4f8377be6ad7043ae, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -307,7 +307,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 7.8
+  m_Radius: 12
 --- !u!1 &2580392793528104281
 GameObject:
   m_ObjectHideFlags: 0
