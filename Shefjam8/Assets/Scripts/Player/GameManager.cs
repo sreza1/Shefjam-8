@@ -18,6 +18,10 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    void Start()
+    {
+    }
+
     public PlayerManager GetPlayerManager() {
     	return GetComponent<PlayerManager>();
     }
@@ -26,8 +30,17 @@ public class GameManager : MonoBehaviour {
     	return GetComponent<InventoryManager>();
     }
 
+    public void IncrementScore() {
+    	GetComponent<ScoreManager>().Increment();
+    }
+
+    public ScoreManager GetScoreManager() {
+    	return GetComponent<ScoreManager>();
+    }
+    
     public void LoadNewScene() 
     {
+    	GetScoreManager().PauseTimer();
     	// go to new scene
     	//SceneManager.LoadScene("testScene", LoadSceneMode.Single);
     	SceneManager.sceneLoaded += OnSceneLoaded;
@@ -36,6 +49,7 @@ public class GameManager : MonoBehaviour {
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         RespawnPlayers();
+        GetScoreManager().ResumeTimer();
     }
 
     private void RespawnPlayers() {

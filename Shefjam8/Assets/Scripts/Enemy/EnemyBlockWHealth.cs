@@ -26,11 +26,12 @@ public class EnemyBlockWHealth : MonoBehaviour
         if (collision.gameObject.CompareTag("Bullet")){
             curHealth-=bulletDmg;
             if (curHealth==0){
+            	GameManager.instance.IncrementScore();
                 Destroy(gameObject);
             }
         } 
 
-        if  (collision.gameObject == p1)
+        if  (collision.gameObject == p1 && p1.GetComponent<PlayerStats>().CanTakeDamage())
         {
         	GameManager.instance.GetPlayerManager().DamagePlayer(collision.gameObject, damageStrength);
         }      

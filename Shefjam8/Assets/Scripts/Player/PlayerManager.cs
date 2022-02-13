@@ -10,6 +10,11 @@ public class PlayerManager : MonoBehaviour
 	[SerializeField] private int DEFAULT_HEALTH = 100;
 	private int playerOneHealth; // persist health here so we can keep it between levels
 
+
+	// Events
+	public delegate void HealthChanged(int newHealth);
+    public static event HealthChanged OnHealthChanged;
+
 	public GameObject GetPlayer() {
 		return playerOne;
 	}
@@ -26,6 +31,7 @@ public class PlayerManager : MonoBehaviour
     	// set health for each player
     	if (playerOne) {
     		playerOneHealth = DEFAULT_HEALTH;
+    		OnHealthChanged(playerOneHealth);
     	}
     }
 
@@ -44,6 +50,7 @@ public class PlayerManager : MonoBehaviour
     	playerOneHealth = currHealth;
 
     	pStats.SetNewHealth(currHealth); // send the new value back to the player
+    	OnHealthChanged(currHealth);
     	pStats.StartInvulnerableFrames(); // make player invulnerable for a short times
     }
 
@@ -55,6 +62,7 @@ public class PlayerManager : MonoBehaviour
     		if(playerOne) { // set the health to the last stored value (or full if player was dead)
     			if (playerOneHealth <= 0) {playerOneHealth = DEFAULT_HEALTH; } 
     			playerOne.GetComponent<PlayerStats>().SetNewHealth(playerOneHealth);
+    			OnHealthChanged(playerOneHealth);
     		}
     	}
     }
