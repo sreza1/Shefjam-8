@@ -34,7 +34,6 @@ public class PlayerManager : MonoBehaviour
     	// set health for each player
     	if (playerOne) {
     		playerOneHealth = DEFAULT_HEALTH;
-    		OnHealthChanged(DEFAULT_HEALTH);
     	}
     }
 
