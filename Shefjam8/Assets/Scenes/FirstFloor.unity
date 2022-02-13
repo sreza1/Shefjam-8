@@ -12507,6 +12507,22 @@ PrefabInstance:
       propertyPath: unlockScore
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 4679232081949715537, guid: 1a62a89f9445c4daaae5623810206a30, type: 3}
+      propertyPath: lockedColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679232081949715537, guid: 1a62a89f9445c4daaae5623810206a30, type: 3}
+      propertyPath: lockedColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679232081949715537, guid: 1a62a89f9445c4daaae5623810206a30, type: 3}
+      propertyPath: lockedColor.g
+      value: 0.44866973
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679232081949715537, guid: 1a62a89f9445c4daaae5623810206a30, type: 3}
+      propertyPath: lockedColor.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a62a89f9445c4daaae5623810206a30, type: 3}
 --- !u!1 &926707843 stripped
@@ -19187,6 +19203,22 @@ PrefabInstance:
     - target: {fileID: 4679232081949715537, guid: 1a62a89f9445c4daaae5623810206a30, type: 3}
       propertyPath: unlockScore
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679232081949715537, guid: 1a62a89f9445c4daaae5623810206a30, type: 3}
+      propertyPath: lockedColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679232081949715537, guid: 1a62a89f9445c4daaae5623810206a30, type: 3}
+      propertyPath: lockedColor.b
+      value: 0.023584902
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679232081949715537, guid: 1a62a89f9445c4daaae5623810206a30, type: 3}
+      propertyPath: lockedColor.g
+      value: 0.51808745
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679232081949715537, guid: 1a62a89f9445c4daaae5623810206a30, type: 3}
+      propertyPath: lockedColor.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a62a89f9445c4daaae5623810206a30, type: 3}
