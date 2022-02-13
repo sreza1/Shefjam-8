@@ -27,7 +27,7 @@ public class UIManager : MonoBehaviour
     public static float floatFontSize;
     public static Vector3 startImageScale;
 
-    public static int maxScore = 2;
+    public static int maxScore = 0;
 
 
     private static Text timer;
@@ -43,6 +43,7 @@ public class UIManager : MonoBehaviour
     	ScoreManager.OnTimerResume += TimerResume;
     	ScoreManager.OnTimerPause += TimerPause;
     	PlayerManager.OnHealthChanged += HealthChanged;
+    	maxScore = GameManager.instance.GetScoreManager().GetMaxScore();
 
         score = transform.GetChild(0).GetComponent<Text>();
 

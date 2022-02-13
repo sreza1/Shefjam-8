@@ -24,6 +24,7 @@ public class ScoreManager : MonoBehaviour
     public static BigInteger displayedValue;
     public static BigInteger scoreDiff;
 
+    public int maxScore = 15;
 
     private bool timerRunning = false;
     private float timerValue = 0;
@@ -65,6 +66,14 @@ public class ScoreManager : MonoBehaviour
     {
     	timerRunning = true;
     	OnTimerResume();
+    }
+
+    public int GetMaxScore() {
+    	return maxScore;
+    }
+
+    public bool MaxScoreReached() {
+    	return actualScore >= maxScore;
     }
 }
 
