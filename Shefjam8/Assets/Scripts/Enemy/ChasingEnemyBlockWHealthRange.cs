@@ -102,7 +102,9 @@ public class ChasingEnemyBlockWHealthRange : MonoBehaviour
     private void ShootPlayer()
     {
         Vector2 diffDir = detectedPlayer.transform.position - shootPoint.position;
-        GameObject bullet = Instantiate(bulletPrefab, shootPoint.position, shootPoint.rotation);
+        float angle = Mathf.Atan2(diffDir.x, diffDir.y) * Mathf.Rad2Deg;
+        print("angle" + angle);
+        GameObject bullet = Instantiate(bulletPrefab, shootPoint.position, Quaternion.Euler(0, 0, -angle));
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(diffDir.normalized * bulletForce, ForceMode2D.Impulse);
         shootDelayRemaining = SHOOTING_DELAY;

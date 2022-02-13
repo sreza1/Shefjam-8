@@ -281,7 +281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f12b3fc1fd8b549d28472bf7414e9bf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 8402587770433527683, guid: 274c5526da65a48aa8f57d9ebd362e8c, type: 3}
+  bulletPrefab: {fileID: 5269630175518412062, guid: afbc15048ef834379b4e23ec67c5c765, type: 3}
   shootPoint: {fileID: 5164027734645081065}
   bulletForce: 20
   shotOffset: 0.5
