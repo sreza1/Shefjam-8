@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2877737208518532351}
   - component: {fileID: 2877737208518532350}
   - component: {fileID: 2877737208518532321}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player 1
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -155,9 +155,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 2877737208522242225}
-  bulletPrefab: {fileID: 5991238677635481965, guid: fc12102abc1457c4b9b6ec567947fbe6, type: 3}
-  bulletForce: 20
-  fireDelta: 0.5
+  bulletPrefab: {fileID: 949000371670336059, guid: fc12102abc1457c4b9b6ec567947fbe6, type: 3}
+  bulletForce: 50
+  fireDelta: 0.1
 --- !u!114 &2877737208518532350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,7 +199,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2877737208522242225}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -213,7 +213,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2877737208522242224}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.94, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -229,7 +229,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2877737209482316991}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
