@@ -34,7 +34,6 @@ public class boss1 : MonoBehaviour
             
             Charge();
         }
-
     }
 
     public int curHealth = 300;
@@ -62,7 +61,7 @@ public class boss1 : MonoBehaviour
     }
 
     public Rigidbody2D rb;
-    public float moveSpeed = 0f;
+    public float moveSpeed;
     Vector2 movement;
 
 
