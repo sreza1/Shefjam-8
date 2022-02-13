@@ -13,8 +13,8 @@ public class ScoreManager : MonoBehaviour
 	public delegate void ScoreIncrement(BigInteger displayedScore, BigInteger newScore, BigInteger scoreDiff);
     public static event ScoreIncrement OnScoreIncrement;
 
-    public delegate void TimerResume(bool Restart);
-    public delegate void TimerPause(bool Finish);
+    public delegate void TimerResume();
+    public delegate void TimerPause();
     public static event TimerResume OnTimerResume;
     public static event TimerPause OnTimerPause;
 
@@ -27,14 +27,9 @@ public class ScoreManager : MonoBehaviour
 
     private bool timerRunning = false;
     private float timerValue = 0;
-    private bool startTimerWhenReady = false;
-
 
     void Update()
     {
-    	if(!timerRunning && startTimerWhenReady) {
-    		ResumeTimer();
-    	}
 
     	if(timerRunning)
     	{
@@ -59,28 +54,17 @@ public class ScoreManager : MonoBehaviour
     	return actualScore;
     }
 
-    public void StartTimer() {
-    	startTimerWhenReady = true;
-    }
-
     public void PauseTimer() 
     {
     	print("score timer resumed");
     	timerRunning = false;
-    	OnTimerPause(false);
+    	OnTimerPause();
     }
 
     public void ResumeTimer()
     {
     	timerRunning = true;
-    	OnTimerResume(false);
+    	OnTimerResume();
     }
-
-    public void StopTimer() // end timer
-    {
-    	timerRunning = false;
-    	OnTimerPause(true);
-    }
-    
 }
 

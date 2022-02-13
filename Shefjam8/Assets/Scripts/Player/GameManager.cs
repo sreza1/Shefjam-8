@@ -20,7 +20,6 @@ public class GameManager : MonoBehaviour {
 
     void Start()
     {
-    	GetScoreManager().StartTimer();
     }
 
     public PlayerManager GetPlayerManager() {
