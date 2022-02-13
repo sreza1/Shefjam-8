@@ -61,4 +61,9 @@ public class GameManager : MonoBehaviour {
     public void RestartLevel() {
     	LoadNewScene(levelName);
     }
+
+    public void NextLevel() {
+    	if(levelName == "FirstFloor") { LoadNewScene("SecondFloor");}
+    	else if (levelName == "SecondFloor") { LoadNewScene("MainMenu");}
+    }
 }

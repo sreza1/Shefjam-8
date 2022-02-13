@@ -107,6 +107,10 @@ public class UIManager : MonoBehaviour
         	if (Input.anyKey) {
         		GameManager.instance.RestartLevel();
         	}
+        } else if (levelComplete) {
+        	if (Input.anyKey) {
+        		GameManager.instance.NextLevel();
+        	}
         }
     }
 
@@ -191,6 +195,7 @@ public class UIManager : MonoBehaviour
 
 
     private bool isPlayerDead = false;
+    private bool levelComplete = false;
     public GameObject gameOverScreen;
     public GameObject endGameScreen;
     void PlayerDied()
@@ -206,7 +211,7 @@ public class UIManager : MonoBehaviour
 
     void GameEnd()
     {
-    	isPlayerDead = true;
+    	levelComplete = true;
     	endGameScreen.SetActive(true);
     	Text time = GameObject.Find("TimeValue-End").GetComponent<Text>();
     	TimeSpan timespan = TimeSpan.FromSeconds((double)GameManager.instance.GetScoreManager().GetElapsedTime());
