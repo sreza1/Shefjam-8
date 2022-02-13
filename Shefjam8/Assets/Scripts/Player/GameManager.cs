@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour {
             instance = this;
             DontDestroyOnLoad(gameObject);
             RespawnPlayers();
+            levelName = SceneManager.GetActiveScene().name;
         }
     }
 
@@ -51,6 +52,7 @@ public class GameManager : MonoBehaviour {
     {
         RespawnPlayers();
         levelName = SceneManager.GetActiveScene().name;
+        GetScoreManager().ResetScoreValue();
         GetScoreManager().ResumeTimer();
     }
 
@@ -64,6 +66,7 @@ public class GameManager : MonoBehaviour {
 
     public void NextLevel() {
     	if(levelName == "FirstFloor") { LoadNewScene("SecondFloor");}
-    	else if (levelName == "SecondFloor") { LoadNewScene("MainMenu");}
+    	else if (levelName == "SecondFloor") { LoadNewScene("ThirdFloor"); GetComponent<ScoreManager>().SetFinalLevel();}
+        else if (levelName == "ThirdFloor") { LoadNewScene("MainMenu"); GetComponent<ScoreManager>().ResetTimer();}
     }
 }

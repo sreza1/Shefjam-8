@@ -21089,6 +21089,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4685106045056962319, guid: bbea7b08c7cf946f99a3f6d6ae844d89, type: 3}
+      propertyPath: locked
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685106045056962319, guid: bbea7b08c7cf946f99a3f6d6ae844d89, type: 3}
       propertyPath: exitDoor
       value: 
       objectReference: {fileID: 1259484893}

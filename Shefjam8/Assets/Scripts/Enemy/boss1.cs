@@ -44,7 +44,7 @@ public class boss1 : MonoBehaviour
         //potentially add death effect animation
         // GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
         // Destroy(effect, 5f);
-        if (collision.gameObject.CompareTag("Bullet"))
+        if (collision.gameObject.CompareTag("Bullet") && curHealth > 0)
         {
             curHealth -= bulletDmg;
             if (curHealth <= 0)
@@ -54,6 +54,7 @@ public class boss1 : MonoBehaviour
 	            	GameManager.instance.GetScoreManager().BossDefeated();
 	            }
 	            else {
+	            	print("DAMAGE HIT");
 	            	GameManager.instance.IncrementScore();
 	            }
                 Destroy(gameObject);

@@ -28,6 +28,7 @@ public class ScoreManager : MonoBehaviour
     public static BigInteger scoreDiff;
 
     public int maxScore = 15;
+    private int winningScore = 0;
 
     private bool timerRunning = false;
     private float timerValue = 0;
@@ -51,6 +52,7 @@ public class ScoreManager : MonoBehaviour
 
     public void Increment()
     {
+    	print("INCREMENT");
         scorePow += 9;
         actualScore += 1;
         scoreValue = (BigInteger)Math.Pow(2, scorePow);
@@ -60,9 +62,9 @@ public class ScoreManager : MonoBehaviour
 		//Increase size of font when increment
         OnScoreIncrement(displayedValue, scoreValue, scoreDiff);
 
-        if (finalLevel && actualScore >= 6) {
+        if (finalLevel && actualScore > winningScore) {
         	GameManager.instance.GetScoreManager().PauseTimer();
-	        GameManager.instance.GetScoreManager().BossDefeated();
+	        OnLevelComplete();
         }
     }
 
@@ -83,6 +85,11 @@ public class ScoreManager : MonoBehaviour
     	OnTimerResume();
     }
 
+    public void ResetTimer()
+    {
+    	timerValue = 0f;
+    }
+
     public int GetMaxScore() {
     	return maxScore;
     }
@@ -97,6 +104,9 @@ public class ScoreManager : MonoBehaviour
 
     private bool finalLevel = false;
     public void SetFinalLevel() {
+    	winningScore = actualScore + 6;
+    	print("Actual Score:" + actualScore);
+    	print("WINNIGN SCORE: " + winningScore);
     	finalLevel = true;
     }
 
