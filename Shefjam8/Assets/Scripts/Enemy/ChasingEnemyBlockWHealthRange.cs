@@ -61,6 +61,7 @@ public class ChasingEnemyBlockWHealthRange : MonoBehaviour
             curHealth -= bulletDmg;
             if (curHealth == 0)
             {
+            	GameManager.instance.IncrementScore();
                 Destroy(gameObject);
             }
         }

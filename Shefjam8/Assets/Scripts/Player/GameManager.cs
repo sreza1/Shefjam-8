@@ -26,6 +26,14 @@ public class GameManager : MonoBehaviour {
     	return GetComponent<InventoryManager>();
     }
 
+    public void IncrementScore() {
+    	GetComponent<ScoreManager>().Increment();
+    }
+
+    public ScoreManager GetScoreManager() {
+    	return GetComponent<ScoreManager>();
+    }
+    
     public void LoadNewScene() 
     {
     	// go to new scene
