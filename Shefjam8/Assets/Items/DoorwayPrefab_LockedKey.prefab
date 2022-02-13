@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exitDoor: {fileID: 0}
-  exitOffsetDistance: 2
+  exitOffsetDistance: 4
   unlockedColor: {r: 0, g: 0, b: 0, a: 1}
   lockedColor: {r: 1, g: 0, b: 0, a: 1}
   locked: 1

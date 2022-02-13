@@ -28,6 +28,19 @@ public class PlayerStats : MonoBehaviour
 		return !invulnerable;
 	}
 
+	void OnCollisionEnter2D(Collision2D collision)
+    {
+    	print("collision Player");
+        // if we are hit by a bullet and can take damage, take 10 damage
+        if (collision.gameObject.CompareTag("Enemy Bullet"))
+        {
+        	print("bullet collision");
+        	if (CanTakeDamage()) {
+        		GameManager.instance.GetPlayerManager().DamagePlayer(gameObject, 10);
+            }
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {

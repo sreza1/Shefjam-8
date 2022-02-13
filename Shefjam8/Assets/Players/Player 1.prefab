@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57e9f0aaab747b742b144a453543555c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DEFAULT_TELEPORT_DELAY: 1
+  DEFAULT_TELEPORT_DELAY: 0.25
   moveSpeed: 20
   rb: {fileID: 2877737208518532346}
   animator: {fileID: 2877737208518532321}
