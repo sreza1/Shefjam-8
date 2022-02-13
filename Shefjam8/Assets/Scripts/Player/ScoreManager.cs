@@ -13,6 +13,11 @@ public class ScoreManager : MonoBehaviour
 	public delegate void ScoreIncrement(BigInteger displayedScore, BigInteger newScore, BigInteger scoreDiff);
     public static event ScoreIncrement OnScoreIncrement;
 
+    public delegate void TimerResume(bool Restart);
+    public delegate void TimerPause(bool Finish);
+    public static event TimerResume OnTimerResume;
+    public static event TimerPause OnTimerPause;
+
     public static int scorePow = 0;
     private int actualScore = 0;
     public static BigInteger scoreValue = 1;
@@ -20,14 +25,23 @@ public class ScoreManager : MonoBehaviour
     public static BigInteger scoreDiff;
 
 
+    private bool timerRunning = false;
+    private float timerValue = 0;
+    private bool startTimerWhenReady = false;
+
+
     void Update()
     {
-    	// score event
-        if (Input.GetKeyDown("space"))
-        {
-            Increment();
-        }
+    	if(!timerRunning && startTimerWhenReady) {
+    		ResumeTimer();
+    	}
+
+    	if(timerRunning)
+    	{
+    		timerValue += Time.deltaTime;
+    	}
     }
+
     public void Increment()
     {
         scorePow += 9;
@@ -40,11 +54,34 @@ public class ScoreManager : MonoBehaviour
         OnScoreIncrement(displayedValue, scoreValue, scoreDiff);
     }
 
-    
-
     public int GetActualScore()
     {
     	return actualScore;
+    }
+
+    public void StartTimer() {
+    	print("timer started");
+    	startTimerWhenReady = true;
+    }
+
+    public void PauseTimer() 
+    {
+    	print("Score timer paused");
+    	timerRunning = false;
+    	OnTimerPause(false);
+    }
+
+    public void ResumeTimer()
+    {
+    	print("Score tiemr resumed");
+    	timerRunning = true;
+    	OnTimerResume(false);
+    }
+
+    public void StopTimer() // end timer
+    {
+    	timerRunning = false;
+    	OnTimerPause(true);
     }
     
 }

@@ -27,10 +27,17 @@ public class UIManager : MonoBehaviour
 
     public static int maxScore = 30;
 
+
+    private static Text timer;
+    private float timerValue = 0.0f;
+    private bool timerRunning = false;
 	// Start is called before the first frame update
     void Start()
     {
     	ScoreManager.OnScoreIncrement += Increment;
+    	ScoreManager.OnTimerResume += TimerResume;
+    	ScoreManager.OnTimerPause += TimerPause;
+    	
         score = transform.GetChild(0).GetComponent<Text>();
 
         addedScore = GameObject.Find("Added Score").GetComponent<Text>();
@@ -42,6 +49,9 @@ public class UIManager : MonoBehaviour
         textStartPos = addedScore.transform.position;
         startFontSize = score.fontSize;
         floatFontSize = score.fontSize;
+
+
+        timer = transform.GetChild(1).GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -57,6 +67,12 @@ public class UIManager : MonoBehaviour
         	score.text = "Infinty";
             //score.gameObject.SetActive(false);
             addedScore.gameObject.SetActive(false);
+        }
+
+        if (timerRunning) 
+        {
+        	timerValue += Time.deltaTime;
+        	UpdateTimerText();
         }
     }
 
@@ -113,4 +129,22 @@ public class UIManager : MonoBehaviour
     }
 
     /***** END OF SCORE RELATED STUFF ****/
+
+    /*** TIMER ***/
+    void TimerPause(bool Finish) {
+    	print("TIMER PAUSEd");
+    	timerRunning = false;
+    }
+
+    void TimerResume(bool Restart) {
+    	if (Restart) {print("Timer Restarted");}
+    	timerRunning = true;
+    	timerValue = 0.0f;
+    }
+
+    void UpdateTimerText()
+    {	
+    	TimeSpan timespan = TimeSpan.FromSeconds((double)timerValue);
+		timer.text = timespan.ToString(@"mm\:ss");
+    }
 }

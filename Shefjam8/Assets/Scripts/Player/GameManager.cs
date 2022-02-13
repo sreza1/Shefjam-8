@@ -18,6 +18,11 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    void Start()
+    {
+    	GetScoreManager().StartTimer();
+    }
+
     public PlayerManager GetPlayerManager() {
     	return GetComponent<PlayerManager>();
     }
@@ -36,6 +41,7 @@ public class GameManager : MonoBehaviour {
     
     public void LoadNewScene() 
     {
+    	GetScoreManager().PauseTimer();
     	// go to new scene
     	//SceneManager.LoadScene("testScene", LoadSceneMode.Single);
     	SceneManager.sceneLoaded += OnSceneLoaded;
@@ -44,6 +50,7 @@ public class GameManager : MonoBehaviour {
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         RespawnPlayers();
+        GetScoreManager().ResumeTimer();
     }
 
     private void RespawnPlayers() {
