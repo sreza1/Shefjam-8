@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
 	private BigInteger displayedValue = 0;
 	private BigInteger scoreValue = 0;
 	public static Text score;
+    public static Image inf;
     public static Text addedScore;
     public static Vector3 textStartPos;
     public static float textOffset;
@@ -24,8 +25,9 @@ public class UIManager : MonoBehaviour
 
     public static int startFontSize;
     public static float floatFontSize;
+    public static Vector3 startImageScale;
 
-    public static int maxScore = 30;
+    public static int maxScore = 2;
 
 
     private static Text timer;
@@ -45,6 +47,8 @@ public class UIManager : MonoBehaviour
         score = transform.GetChild(0).GetComponent<Text>();
 
         addedScore = GameObject.Find("Added Score").GetComponent<Text>();
+        inf = GameObject.Find("Infinity").GetComponent<Image>();
+        inf.gameObject.SetActive(false);
 
         textColor = addedScore.color;
         textColor.a = 0.0f;
@@ -53,6 +57,8 @@ public class UIManager : MonoBehaviour
         textStartPos = addedScore.transform.position;
         startFontSize = score.fontSize;
         floatFontSize = score.fontSize;
+
+        startImageScale = inf.transform.localScale;
 
 
         timer = transform.GetChild(1).GetComponent<Text>();
@@ -70,11 +76,19 @@ public class UIManager : MonoBehaviour
             UpdateScoreValues();
             UpdateTextUI();
         }
+        else if (actualScore >= maxScore && inf.gameObject.active == false)
+        {
+            // score.gameObject.SetActive(false);
+            score.text = "";
+            addedScore.gameObject.SetActive(false);
+            inf.gameObject.SetActive(true);
+            inf.transform.localScale = startImageScale*2;
+        }
         else
         {
-        	score.text = "Infinty";
-            //score.gameObject.SetActive(false);
-            addedScore.gameObject.SetActive(false);
+            if (inf.transform.localScale.sqrMagnitude > startImageScale.sqrMagnitude) {
+                inf.transform.localScale -= Time.deltaTime*startImageScale*10;
+            }
         }
 
         if (timerRunning) 
