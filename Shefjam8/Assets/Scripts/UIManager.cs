@@ -43,6 +43,7 @@ public class UIManager : MonoBehaviour
     	ScoreManager.OnTimerResume += TimerResume;
     	ScoreManager.OnTimerPause += TimerPause;
     	PlayerManager.OnHealthChanged += HealthChanged;
+    	PlayerManager.OnPlayerDied += PlayerDied;
     	maxScore = GameManager.instance.GetScoreManager().GetMaxScore();
 
         score = transform.GetChild(0).GetComponent<Text>();
@@ -96,6 +97,14 @@ public class UIManager : MonoBehaviour
         {
         	timerValue += Time.deltaTime;
         	UpdateTimerText();
+        }
+
+        if (isPlayerDead) {
+        	print("PLAYER DEAD WAITING FOR INPUT");
+        	if (Input.anyKey) {
+        		print("Restarting Level");
+        		GameManager.instance.RestartLevel();
+        	}
         }
     }
 
@@ -176,5 +185,13 @@ public class UIManager : MonoBehaviour
     void HealthChanged(int newHealth)
     {
     	health.text = newHealth.ToString();
+    }
+
+
+    private bool isPlayerDead = false;
+    void PlayerDied()
+    {
+    	print("Game Over");
+    	isPlayerDead = true;
     }
 }

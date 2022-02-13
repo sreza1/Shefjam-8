@@ -20,7 +20,9 @@ public class EnemyBlockWHealth : MonoBehaviour
 
     void Update()
     {
-        animator.SetFloat("Horizontal", p1.transform.position.x - this.transform.position.x);
+    	if (p1) {
+	        animator.SetFloat("Horizontal", p1.transform.position.x - this.transform.position.x);
+	    }
     }
 
     public int curHealth = 50;

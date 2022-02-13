@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     public static GameManager instance;
+    private string levelName = "FirstFloor";
 
     private void Awake()
     {
@@ -38,21 +39,26 @@ public class GameManager : MonoBehaviour {
     	return GetComponent<ScoreManager>();
     }
     
-    public void LoadNewScene() 
+    public void LoadNewScene(string sceneName) 
     {
     	GetScoreManager().PauseTimer();
     	// go to new scene
-    	//SceneManager.LoadScene("testScene", LoadSceneMode.Single);
+    	SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
     	SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         RespawnPlayers();
+        levelName = SceneManager.GetActiveScene().name;
         GetScoreManager().ResumeTimer();
     }
 
     private void RespawnPlayers() {
     	GetComponent<PlayerManager>().RespawnPlayers();
+    }
+
+    public void RestartLevel() {
+    	LoadNewScene(levelName);
     }
 }

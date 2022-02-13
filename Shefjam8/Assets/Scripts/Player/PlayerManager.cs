@@ -15,6 +15,9 @@ public class PlayerManager : MonoBehaviour
 	public delegate void HealthChanged(int newHealth);
     public static event HealthChanged OnHealthChanged;
 
+    public delegate void PlayerDied();
+    public static event PlayerDied OnPlayerDied;
+
 	public GameObject GetPlayer() {
 		return playerOne;
 	}
@@ -51,18 +54,21 @@ public class PlayerManager : MonoBehaviour
     	int currHealth = pStats.GetCurrentHealth(); // the players current health
 
     	currHealth -= damage;
-    	if (currHealth < 0) { currHealth = 0; } // do the damage (min cap at 0)
+    	if (currHealth < 0) { currHealth = 0;} // do the damage (min cap at 0)
     	playerOneHealth = currHealth;
 
     	pStats.SetNewHealth(currHealth); // send the new value back to the player
     	OnHealthChanged(currHealth);
     	pStats.StartInvulnerableFrames(); // make player invulnerable for a short times
+
+    	if (currHealth <= 0) { OnPlayerDied(); Destroy(victim); }
     }
 
     public void RespawnPlayers()
     {
     	// respawn each player in new scene (meaning full health)
     	if (playerOnePrefab) {
+    		Destroy(playerOne);
     		playerOne = Instantiate(playerOnePrefab, new Vector3(0,0,0), Quaternion.Euler(new Vector3(0, 0, 0)));
     		if(playerOne) { // set the health to the last stored value (or full if player was dead)
     			if (playerOneHealth <= 0) {playerOneHealth = DEFAULT_HEALTH; } 
