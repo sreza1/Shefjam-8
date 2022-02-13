@@ -15,9 +15,6 @@ public class CameraManager : MonoBehaviour
     // Time when the movement started.
     private float movementStartTime; // time we started moving camera
 
-    // Total distance between the markers.
-    private float journeyLength; // distance to move camera
-
     private int edgeColliderOffset = 10;
 
     // Start is called before the first frame update
@@ -64,16 +61,6 @@ public class CameraManager : MonoBehaviour
     }
 
     protected virtual void PlayerStoppedColliding(GameObject player) {
-    	//Vector2 playerLocRelativeToCenter = transform.position -= player.transform.position;
     	collidingPlayer = player;
-
-    	// Keep a note of the time the movement started.
-        movementStartTime = Time.time;
-
-        // Calculate the journey length.
-        journeyLength = Vector2.Distance(transform.position, player.transform.position);
-    	
-    	//print("Pv" + playerVelocity.x + "; pv: " + playerVelocity.y + "; speed: " + playerVelocity.GetSpeed());
-    	//transform.position += (new Vector3(playerVelocity.x, playerVelocity.y, 0) * playerVelocity.magnitude);
     }
 }

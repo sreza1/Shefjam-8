@@ -931,6 +931,10 @@ PrefabInstance:
       value: DoorwayPrefab_Unlocked
       objectReference: {fileID: 0}
     - target: {fileID: 4679232081949715537, guid: 1a62a89f9445c4daaae5623810206a30, type: 3}
+      propertyPath: locked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679232081949715537, guid: 1a62a89f9445c4daaae5623810206a30, type: 3}
       propertyPath: exitDoor
       value: 
       objectReference: {fileID: 2000671939}
@@ -995,6 +999,10 @@ PrefabInstance:
       propertyPath: exitDoor
       value: 
       objectReference: {fileID: 1207206443}
+    - target: {fileID: 4685106045056962319, guid: bbea7b08c7cf946f99a3f6d6ae844d89, type: 3}
+      propertyPath: exitOffsetDistance
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbea7b08c7cf946f99a3f6d6ae844d89, type: 3}
 --- !u!1 &653347226
@@ -1353,7 +1361,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 12.5
+  orthographic size: 15
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1421,7 +1429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86e5542adea3c4189b02990f40d5c454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraSpeed: 20
+  cameraSpeed: 100
 --- !u!1 &1188636158
 GameObject:
   m_ObjectHideFlags: 0
@@ -1852,6 +1860,10 @@ PrefabInstance:
       propertyPath: exitDoor
       value: 
       objectReference: {fileID: 1847384514}
+    - target: {fileID: 4679232081949715537, guid: 1a62a89f9445c4daaae5623810206a30, type: 3}
+      propertyPath: exitOffsetDistance
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a62a89f9445c4daaae5623810206a30, type: 3}
 --- !u!1 &1598688542

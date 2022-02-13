@@ -20,9 +20,12 @@ public class PlayerManager : MonoBehaviour
 	}
 
 	public void TeleportToExit(GameObject currentLocationObject, GameObject teleportLocationObject, int teleportOffsetDistance){
-		currentLocationObject.transform.parent.gameObject.SetActive(false);
+		if (currentLocationObject.transform.parent.gameObject != teleportLocationObject.transform.parent.gameObject) {
+			currentLocationObject.transform.parent.gameObject.SetActive(false);
+			teleportLocationObject.transform.parent.gameObject.SetActive(true);
+		}
 		playerOne.GetComponent<PlayerMovement>().TeleportToLocation(teleportLocationObject, teleportOffsetDistance);
-		teleportLocationObject.transform.parent.gameObject.SetActive(true);
+		
 	}
 
     // Start is called before the first frame update
