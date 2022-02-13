@@ -193,6 +193,14 @@ public class UIManager : MonoBehaviour
     	health.text = newHealth.ToString();
     }
 
+    void OnDestroy() {
+       ScoreManager.OnScoreIncrement -= Increment;
+    	ScoreManager.OnTimerResume -= TimerResume;
+    	ScoreManager.OnTimerPause -= TimerPause;
+    	PlayerManager.OnHealthChanged -= HealthChanged;
+    	PlayerManager.OnPlayerDied -= PlayerDied;
+    	ScoreManager.OnLevelComplete -= GameEnd;
+    }
 
     private bool isPlayerDead = false;
     private bool levelComplete = false;
