@@ -176,7 +176,7 @@ public class UIManager : MonoBehaviour
     void TimerResume() {
     	print("timer resumed");
     	timerRunning = true;
-    	timerValue = 0.0f;
+    	timerValue = GameManager.instance.GetScoreManager().GetElapsedTime();
     }
 
     void UpdateTimerText()

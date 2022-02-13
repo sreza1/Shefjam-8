@@ -59,6 +59,11 @@ public class ScoreManager : MonoBehaviour
 
 		//Increase size of font when increment
         OnScoreIncrement(displayedValue, scoreValue, scoreDiff);
+
+        if (finalLevel && actualScore >= 6) {
+        	GameManager.instance.GetScoreManager().PauseTimer();
+	        GameManager.instance.GetScoreManager().BossDefeated();
+        }
     }
 
     public int GetActualScore()
@@ -88,6 +93,17 @@ public class ScoreManager : MonoBehaviour
 
     public float GetElapsedTime() {
     	return timerValue;
+    }
+
+    private bool finalLevel = false;
+    public void SetFinalLevel() {
+    	finalLevel = true;
+    }
+
+    public void ResetScoreValue()
+    {
+    	print("RESET PoW");
+    	scorePow = 0;
     }
 }
 

@@ -8,7 +8,7 @@ public class boss1 : MonoBehaviour
     protected PlayerManager playerManager;
     private GameObject p1 = null;
     [SerializeField] private int damageStrength = 10;
-
+    public bool finalLevel = false;
     public float chargeDelta = 0.5F;
 
     private float CHARGING_DELAY = 3f;
@@ -47,10 +47,15 @@ public class boss1 : MonoBehaviour
         if (collision.gameObject.CompareTag("Bullet"))
         {
             curHealth -= bulletDmg;
-            if (curHealth == 0)
+            if (curHealth <= 0)
             {
-            	GameManager.instance.GetScoreManager().PauseTimer();
-            	GameManager.instance.GetScoreManager().BossDefeated();
+            	if (!finalLevel) {
+	            	GameManager.instance.GetScoreManager().PauseTimer();
+	            	GameManager.instance.GetScoreManager().BossDefeated();
+	            }
+	            else {
+	            	GameManager.instance.IncrementScore();
+	            }
                 Destroy(gameObject);
             }
         }

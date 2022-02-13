@@ -468,6 +468,10 @@ PrefabInstance:
       propertyPath: curHealth
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 8522853580683706102, guid: 4a69f954e90974a7794da09a0092ad83, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8522853580683706103, guid: 4a69f954e90974a7794da09a0092ad83, type: 3}
       propertyPath: m_Color.b
       value: 0
@@ -4211,6 +4215,99 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1442959002370683143, guid: bd3450b4ec83e419198bb0ab20f96215, type: 3}
   m_PrefabInstance: {fileID: 384993053}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &388683465 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8522853580683705992, guid: 4a69f954e90974a7794da09a0092ad83, type: 3}
+  m_PrefabInstance: {fileID: 58560441}
+  m_PrefabAsset: {fileID: 0}
+--- !u!60 &388683466
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 388683465}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.28, y: 1.28}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.42499998, y: -0.42499998}
+      - {x: 0.42999998, y: -0.405}
+      - {x: 0.48499998, y: -0.345}
+      - {x: 0.59, y: -0.355}
+      - {x: 0.625, y: -0.305}
+      - {x: 0.62, y: -0.26}
+      - {x: 0.59999996, y: -0.235}
+      - {x: 0.64, y: -0.19999999}
+      - {x: 0.64, y: -0.07}
+      - {x: 0.59499997, y: 0.035}
+      - {x: 0.64, y: 0.12}
+      - {x: 0.64, y: 0.24499999}
+      - {x: 0.615, y: 0.31}
+      - {x: 0.625, y: 0.35}
+      - {x: 0.59, y: 0.39999998}
+      - {x: 0.56, y: 0.39499998}
+      - {x: 0.53999996, y: 0.37}
+      - {x: 0.435, y: 0.42}
+      - {x: 0.42999998, y: 0.475}
+      - {x: 0.405, y: 0.545}
+      - {x: 0.39499998, y: 0.585}
+      - {x: 0.29999998, y: 0.61}
+      - {x: 0.265, y: 0.61}
+      - {x: 0.265, y: 0.59499997}
+      - {x: 0.28, y: 0.52}
+      - {x: 0.22, y: 0.475}
+      - {x: 0.205, y: 0.41}
+      - {x: 0.07, y: 0.39999998}
+      - {x: 0.049999997, y: 0.375}
+      - {x: 0.005, y: 0.275}
+      - {x: -0.14, y: 0.24}
+      - {x: -0.21499999, y: 0.22}
+      - {x: -0.24499999, y: 0.265}
+      - {x: -0.295, y: 0.26}
+      - {x: -0.31, y: 0.12}
+      - {x: -0.35, y: 0.125}
+      - {x: -0.405, y: 0.06}
+      - {x: -0.53, y: 0.07}
+      - {x: -0.64, y: 0.035}
+      - {x: -0.64, y: 0.01}
+      - {x: -0.615, y: 0}
+      - {x: -0.53, y: -0.024999999}
+      - {x: -0.39999998, y: -0.01}
+      - {x: -0.355, y: -0.08}
+      - {x: -0.28, y: -0.11}
+      - {x: -0.295, y: -0.155}
+      - {x: -0.295, y: -0.21}
+      - {x: -0.24499999, y: -0.22}
+      - {x: -0.21, y: -0.17999999}
+      - {x: -0.14999999, y: -0.205}
+      - {x: -0.035, y: -0.175}
+      - {x: 0.005, y: -0.225}
+      - {x: 0.044999998, y: -0.33499998}
+      - {x: 0.07, y: -0.35999998}
+      - {x: 0.21499999, y: -0.385}
+      - {x: 0.22, y: -0.415}
+      - {x: 0.22999999, y: -0.435}
+      - {x: 0.26, y: -0.545}
+      - {x: 0.26999998, y: -0.565}
+      - {x: 0.32, y: -0.565}
+      - {x: 0.36499998, y: -0.515}
+      - {x: 0.39, y: -0.53499997}
+      - {x: 0.41, y: -0.48999998}
 --- !u!1001 &392844387
 PrefabInstance:
   m_ObjectHideFlags: 0
