@@ -32,6 +32,7 @@ public class Shooting : MonoBehaviour
     void Shoot(){
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        SoundManagerScript.PlaySound("fire");
         rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
     }
 }
